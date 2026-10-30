@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Battle | Handshake Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">Q</span><span>QUIZ BATTLE</span></div>
+      <span class="project-tag">HANDSHAKE PROJECT</span>
+    </header>
+
+    <section id="homeScreen" class="panel home-panel">
+      <div class="eyebrow">REAL-TIME MULTIPLAYER</div>
+      <h1>Think fast.<br><span>Score big.</span></h1>
+      <p class="intro">Challenge your friends in a live trivia battle. Create a room or join one with a code.</p>
+      <label for="playerName">YOUR PLAYER NAME</label>
+      <input id="playerName" maxlength="18" placeholder="Enter your name" autocomplete="nickname">
+      <div class="home-actions">
+        <button id="createBtn" class="primary">Create a room</button>
+        <div class="join-row">
+          <input id="roomCodeInput" maxlength="5" placeholder="ROOM CODE" aria-label="Room code">
+          <button id="joinBtn" class="secondary">Join room</button>
+        </div>
+      </div>
+      <p id="homeError" class="error" role="alert"></p>
+      <div class="rules">
+        <div><strong>2–12</strong><span>players</span></div>
+        <div><strong>8</strong><span>questions</span></div>
+        <div><strong>15 sec</strong><span>per question</span></div>
+      </div>
+    </section>
+
+    <section id="lobbyScreen" class="panel hidden">
+      <div class="screen-heading">
+        <div><div class="eyebrow">WAITING ROOM</div><h2>Game lobby</h2></div>
+        <div class="room-code"><span>ROOM CODE</span><strong id="roomCodeDisplay">-----</strong><button id="copyCodeBtn" class="copy-btn">Copy</button></div>
+      </div>
+      <p class="muted">Share this code with friends so they can join from their own devices.</p>
+      <div class="player-heading"><h3>Players</h3><span id="playerCount">0 / 12</span></div>
+      <ul id="lobbyPlayers" class="player-list"></ul>
+      <p id="lobbyMessage" class="muted"></p>
+      <button id="startBtn" class="primary wide hidden">Start quiz battle</button>
+      <p id="lobbyError" class="error" role="alert"></p>
+    </section>
+
+    <section id="gameScreen" class="panel hidden">
+      <div class="game-meta"><span id="questionCount">QUESTION 1 / 8</span><span id="timerText">15 seconds</span></div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      <div class="eyebrow">QUIZ BATTLE</div>
+      <h2 id="questionText" class="question-text">Question goes here</h2>
+      <div id="answers" class="answers">
+        <button class="answer" data-choice="0"></button>
+        <button class="answer" data-choice="1"></button>
+        <button class="answer" data-choice="2"></button>
+        <button class="answer" data-choice="3"></button>
+      </div>
+      <p id="answerFeedback" class="feedback" aria-live="polite"></p>
+      <div class="live-scores">
+        <div class="player-heading"><h3>Live leaderboard</h3><span>Updates in real time</span></div>
+        <ol id="gameLeaderboard" class="score-list"></ol>
+      </div>
+    </section>
+
+    <section id="resultsScreen" class="panel hidden">
+      <div class="eyebrow">BATTLE COMPLETE</div>
+      <div class="trophy">🏆</div>
+      <h2 id="winnerTitle">We have a winner!</h2>
+      <p id="winnerSubtitle" class="muted"></p>
+      <h3>Final leaderboard</h3>
+      <ol id="finalLeaderboard" class="score-list final-list"></ol>
+      <button id="playAgainBtn" class="primary wide">Back to home</button>
+    </section>
+    <footer>Made for the Handshake multiplayer project · Play together, wherever you are.</footer>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

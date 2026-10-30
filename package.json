@@ -1,0 +1,17 @@
+{
+  "name": "handshake-quiz-battle",
+  "version": "1.0.0",
+  "description": "A real-time multiplayer quiz game for the Handshake project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
